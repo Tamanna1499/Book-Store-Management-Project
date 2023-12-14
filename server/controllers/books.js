@@ -49,8 +49,9 @@ const createBook = async (req, res) => {
             { userId, bookId, title, description, author, category, price, discount, image }
         );
 
-        const newBook = result.records[0].get('b');
-        res.status(201).json({ result: newBook.properties });
+        const newBook = result.records[0].get('b').properties;
+        res.status(201).json(newBook);
+
     } catch (error) {
         console.error(error);
         res.status(409).json({ message: error.message });
@@ -99,8 +100,8 @@ const editBook = async (req, res) => {
             { id, title, description, author, category, price, discount, image }
         );
         
-        const updatedBook = updateResult.records[0].get('b');
-        res.json({ result: updatedBook.properties });
+        const updatedBook = updateResult.records[0].get('b').properties;
+        res.json(updatedBook);
         
     } catch (error) {
         console.error(error);
