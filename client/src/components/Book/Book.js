@@ -60,7 +60,7 @@ function Book({book, setSelectedId}){
                 
             </Paragraph>
             {/* {expand ?
-                <Link href="#">{book.price.split(" ").map((price) => `₹${price} `)}</Link>
+                <Link href="#">{`₹${book.price} `}</Link>
             : null } */}
             <Text strong="true">Category: {book.category}</Text>
             <br/>
