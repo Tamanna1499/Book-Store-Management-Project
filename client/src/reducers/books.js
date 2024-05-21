@@ -3,6 +3,7 @@ import { FETCH_ALL_BOOKS, CREATE_BOOK, EDIT_BOOK, DELETE_BOOK } from "../constan
 const bookReducer = (state = [], action) => {
     switch(action.type){
         case FETCH_ALL_BOOKS:
+            console.log(action.payload)
             return action.payload;
         case CREATE_BOOK:
             return [...state, action.payload];

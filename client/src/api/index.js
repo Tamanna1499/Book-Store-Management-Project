@@ -17,7 +17,7 @@ api.interceptors.request.use((req)=>{
     return req;
 });
 
-export const fetchBooks = async () => api.get("/books");
+export const fetchBooks = async (userId) => api.get(`${"/books"}/${userId}`);
 export const createBook = async (book) => api.post("/books", book);
 export const editBook = async (id, book) => api.patch(`${"/books"}/${id}`, book);
 export const deleteBook = async (id) => api.delete(`${"/books"}/${id}`);

@@ -3,13 +3,23 @@ import {Row, Col, Spin} from "antd"
 import Book from '../Book'
 import { useSelector } from 'react-redux'
 import styles from '../BookList/styles'
+import logo from '../../images/book-image.jpg';
 
 const BookList = ({setSelectedId}) => {
   const books = useSelector((state)=>state.books)
-  // const id = []
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const userId = user?.result?.id;
   console.log(books)
-
-  return !books.length ? 
+  if(!user){
+    return(
+      <div>
+        <span>
+        <img src={logo} alt="logo" style={styles.logoImg}/>
+        </span>
+      </div>
+    )
+  }
+  return !books.length? 
   <div style={{textAlign:"center"}}>
     <Spin size="large"/>
   </div> :

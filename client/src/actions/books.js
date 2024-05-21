@@ -1,9 +1,10 @@
 import * as api from "../api";
 import {FETCH_ALL_BOOKS, CREATE_BOOK, EDIT_BOOK, DELETE_BOOK} from "../constants/actionTypes";
  
-export const getBooks = () => async (dispatch) =>{
+export const getBooks = (userId) => async (dispatch) =>{
     try{
-        const {data} = await api.fetchBooks();
+        const {data} = await api.fetchBooks(userId);
+        // console.log(data);
         dispatch({type: FETCH_ALL_BOOKS, payload: data});
     } catch(error){
         console.log(error.message)

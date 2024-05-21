@@ -4,7 +4,7 @@ import { getBooks, createBook, editBook, deleteBook} from "../controllers/books.
 const router = Router();
 import authentication from "../middlewares/authentication.js";
 
-router.get("/", getBooks);
+router.get("/:userId", getBooks);
 router.post("/", authentication, createBook);
 router.patch("/:id", authentication, editBook);
 router.delete("/:id", authentication, deleteBook);

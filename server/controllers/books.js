@@ -4,7 +4,8 @@ import {driver, createSession} from '../neo4jSession.js'
 const getBooks = async (req, res) => {
     const session = createSession();
     try{
-        const result = await session.run('MATCH (b:Book) RETURN b');
+        const userId = req.params.userId;
+        const result = await session.run('MATCH (p:User {id: $userId})-[:POSTED]->(b:Book) RETURN b', {userId});
         const books = result.records.map((record)=> record.get('b').properties);
         res.status(200).json(books);
     } catch(error){

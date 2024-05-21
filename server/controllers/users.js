@@ -26,7 +26,7 @@ const login = async (req, res) => {
             // console.log("Invalid Password")
             return res.status(400).json({ message: 'Invalid password' });
         }
-        const token = jwt.sign({ email: user.properties.email, id: user.properties.id }, "jwt123", { expiresIn: '24h' });
+        const token = jwt.sign({ email: user.properties.email, id: user.properties.id }, "jwt123", { expiresIn: '1h' });
         console.log(user.properties);
         res.status(200).json({ result: user.properties, token });
     } catch (error) {
@@ -63,7 +63,7 @@ const signup = async (req, res) => {
 
         const newUser = result.records[0].get('u');
 
-        const token = jwt.sign({ email: newUser.properties.email, id: newUser.properties.id }, "jwt123", { expiresIn: '24h' });
+        const token = jwt.sign({ email: newUser.properties.email, id: newUser.properties.id }, "jwt123", { expiresIn: '1h' });
 
         res.status(201).json({ result: newUser.properties, token });
 
